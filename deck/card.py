@@ -7,10 +7,6 @@ class Suit(str, Enum):
     Clubs = "clubs"
     Diamonds = "diamonds"
 
-    @classmethod
-    def list(cls):
-        return list(map(lambda c: c, cls))
-
 
 class Rank(IntEnum):
     Ace = 1
@@ -27,15 +23,41 @@ class Rank(IntEnum):
     Queen = 12
     King = 13
 
-    @classmethod
-    def list(cls):
-        return list(map(lambda c: c, cls))
-
 
 class Card:
+    """
+    Initializes a Card object with a specified suit and rank.
+
+    If the provided suit or rank is a string instead of an enum member,
+    it attempts to convert it to the corresponding `Suit` or `Rank` enum.
+
+    Args:
+        suit (Suit | str): The suit of the card, either as a Suit enum or a string.
+        rank (Rank | str): The rank of the card, either as a Rank enum or a string.
+
+    Raises:
+        TypeError: If the suit is not a Suit or a valid string representation.
+        TypeError: If the rank is not a Rank or a valid string representation.
+    """
+
     def __init__(self, suit: Suit, rank: Rank):
+        """
+        Initializes a Card object with a specified suit and rank.
+
+        If the provided suit or rank is a string instead of an enum member,
+        it attempts to convert it to the corresponding `Suit` or `Rank` enum.
+
+        Args:
+            suit (Suit | str): The suit of the card, either as a Suit enum or a string.
+            rank (Rank | str): The rank of the card, either as a Rank enum or a string.
+
+        Raises:
+            TypeError: If the suit is not a Suit or a valid string representation.
+            TypeError: If the rank is not a Rank or a valid string representation.
+        """
         self.suit = suit
         self.rank = rank
+
         if isinstance(suit, str) and not isinstance(suit, Suit):
             self.suit = Suit[suit]
         if isinstance(rank, str) and not isinstance(rank, Rank):

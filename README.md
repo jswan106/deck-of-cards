@@ -1,30 +1,68 @@
-# Deck of Cards Code Sample Assignment
-Your assignment is to code a set of Python classes that represent a deck of poker-style playing
-cards (fifty-two playing cards in four suits: hearts, spades, clubs, diamonds, with face values of
-Ace, 2-10, Jack, Queen, and King).
+# Deck of Cards
 
-### Requirements
-Within one of your classes, you must provide two operations:
-1. **shuffle()**
-    - Shuffle returns no value, but results in the cards in the deck being randomly permuted. 
-    - Please do not use library-provided shuffle operations to implement this function. 
-    - You may use library-provided random number generators in your solution if needed.
-2. **deal_one_card()**
-    - This function should return the card from the "top" of the deck to the caller. 
-    - If the deck is empty, no card is dealt.
+## Overview
 
-Specifically, a call to shuffle() followed by 52 calls to deal_one_card() should result in the caller
-being provided all 52 cards of the deck in a random order.
+This project implements a standard deck of 52 poker-style playing cards. It includes functionality to shuffle the deck and deal cards one at a time. The deck consists of four suits (Hearts, Diamonds, Clubs, and Spades) with thirteen ranks in each suit (Ace, 2-10, Jack, Queen, and King).
 
-Many details of this assignment have been left intentionally vague. Use your best judgement to
-come up with reasonable design decisions. If you are torn between two approaches, feel free to
-make note of that fact somewhere in your submission, but only submit one answer.
+## Features
 
-While this is a trivial assignment, pretend that this code will become a foundational part of a new
-Strider product. Take whatever measures you feel are required for your code to meet this bar.
+- **Deck of 52 Cards**: Represents a full deck of playing cards.
+- **Custom Shuffle Implementation**: Uses the Fisher-Yates algorithm instead of built-in shuffle methods.
+- **Efficient Card Dealing**: Follows a Last-In, First-Out (LIFO) approach for O(1) performance when dealing.
 
-### Delivery
-This is not a timed test. It is far more important that you do this correctly than it is that you do it
-quickly. We are also aware that you may have other obligations, and we will not penalize you for
-that. That said, we ask that people submit their response within 3-5 days. If that is not possible,
-please let us know. 
+## Installation
+
+No external dependencies are required apart from Python.
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd deck-of-cards
+   ```
+2. Ensure you have Python 3 installed.
+
+## Usage
+
+```python
+from deck import Deck
+
+deck = Deck()      # Create a new deck
+deck.shuffle()     # Shuffle the deck
+card = deck.deal_one_card()  # Deal one card
+print(card)        # Output: e.g., "King of Hearts"
+```
+
+## Project Structure
+
+```
+deck-of-cards/
+│── deck/
+│   ├── __init__.py
+│   ├── card.py  # Defines the Card class
+│   ├── deck.py  # Implements the Deck class
+│── tests/
+│   ├── test_card.py  # Unit tests for Card class
+│   ├── test_deck.py  # Unit tests for Deck class
+│── README.md  # Project documentation
+```
+
+## Testing
+
+To run unit tests, use:
+
+```bash
+python -m unittest discover tests
+```
+
+## License
+
+This project is open-source under the MIT License.
+
+## Notes
+
+- The `shuffle()` method does **not** use `random.shuffle()` as per assignment constraints.
+- `deal_one_card()` returns `None` if all cards have been dealt.
+
+## Author
+
+Jordan Swan

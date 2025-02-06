@@ -15,3 +15,5 @@ if __name__ == "__main__":
 
     second_card = deck.deal_one_card()
     print(f"Second Dealt Card - {second_card}")
+
+    print(f"Deck Cards length after 2 cards were dealt: {len(deck._cards)}")
