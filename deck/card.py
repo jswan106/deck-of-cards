@@ -26,18 +26,15 @@ class Rank(IntEnum):
 
 class Card:
     """
-    Initializes a Card object with a specified suit and rank.
+    Represents a single playing card with a suit and rank.
 
-    If the provided suit or rank is a string instead of an enum member,
-    it attempts to convert it to the corresponding `Suit` or `Rank` enum.
+    Attributes:
+        suit (Suit): The suit of the card (Hearts, Diamonds, Clubs, Spades).
+        rank (Rank): The rank of the card (Ace, 2-10, Jack, Queen, King).
 
-    Args:
-        suit (Suit | str): The suit of the card, either as a Suit enum or a string.
-        rank (Rank | str): The rank of the card, either as a Rank enum or a string.
-
-    Raises:
-        TypeError: If the suit is not a Suit or a valid string representation.
-        TypeError: If the rank is not a Rank or a valid string representation.
+    Methods:
+        __str__():
+            Returns a human-readable string representation of the card.
     """
 
     def __init__(self, suit: Suit, rank: Rank):
