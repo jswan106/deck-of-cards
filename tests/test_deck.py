@@ -1,5 +1,5 @@
 import unittest
-from deck.card import Card, Rank, Suit
+from deck.card import Card
 from deck.deck import Deck
 
 
@@ -17,7 +17,8 @@ class TestDeck(unittest.TestCase):
         # Store the order before shuffling
         original_order = deck.cards[:]
 
-        deck.shuffle()
+        shuffle_return = deck.shuffle()
+        self.assertIsNone(shuffle_return)
 
         # Store the order after shuffling
         shuffled_order = deck.cards[:]

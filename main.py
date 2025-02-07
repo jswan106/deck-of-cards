@@ -1,4 +1,3 @@
-from deck.card import Card, Rank, Suit
 from deck.deck import Deck
 
 if __name__ == "__main__":
@@ -6,14 +5,14 @@ if __name__ == "__main__":
     print(f"Deck Cards length: {len(deck._cards)}")
 
     print("Shuffling Deck...")
-    deck.shuffle()
-
+    shuffle_return = deck.shuffle()
+    
     print(f"Deck Cards length after shuffle: {len(deck._cards)}")
+    print(f"Deck shuffle return: {shuffle_return}")
 
-    first_card = deck.deal_one_card()
-    print(f"First Dealt Card - {first_card}")
+    hand = [deck.deal_one_card() for i in range(len(deck.cards))]
+    for idx, card in enumerate(hand):
+        print(f"Card {idx} - {card}")
 
-    second_card = deck.deal_one_card()
-    print(f"Second Dealt Card - {second_card}")
-
-    print(f"Deck Cards length after 2 cards were dealt: {len(deck._cards)}")
+    no_result = deck.deal_one_card()
+    print(f"Card dealt from empty deck - {no_result}")
